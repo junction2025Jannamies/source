@@ -126,7 +126,17 @@ var delayedEvent = script.createEvent("DelayedCallbackEvent");
 delayedEvent.bind(function(eventData)
 {
     script.george.enabled = false;
+    delayedEvent2.reset(Math.floor(Math.random() * 30));
 });
 
+var delayedEvent2 = script.createEvent("DelayedCallbackEvent");
+delayedEvent2.bind(function(eventData)
+{
+    script.george.enabled = true;
+    script.boom.play(0);
+    delayedEvent.reset(0.5);
+});
+
+delayedEvent.reset(5);
 
 startSession();
